@@ -1,75 +1,54 @@
-# Nuxt 3 Minimal Starter
+# JetLink 🚀
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+JetLink is a simple and user-friendly URL shortener designed for ease of use. It is built using a modern stack, including Nuxt, Tailwind, Node.js, SQL, JWT, FullStack, and Encryption Authentication. The platform focuses on simplicity, eliminating the need for pricing or registration to create shortened URLs. Additionally, JetLink provides built-in tracking analytics for the links you create.
 
-## Setup
+## Getting Started 🏹
 
-Make sure to install the dependencies:
+### Prerequisites
 
-```bash
-# npm
-npm install
+- Ensure you have Git and Node.js installed on your machine.
 
-# pnpm
-pnpm install
+### Installation
 
-# yarn
-yarn install
+1. **Clone the repository:**
 
-# bun
-bun install
-```
+   ```bash
+   git clone https://github.com/RicardoCastelloBerenguer/jetLink.git
 
-## Development Server
+   ```
 
-Start the development server on `http://localhost:3000`:
+2. **Navigate to the project directory:**
 
-```bash
-# npm
-npm run dev
+   ```bash
+   cd jetlink
 
-# pnpm
-pnpm run dev
+   ```
 
-# yarn
-yarn dev
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-# bun
-bun run dev
-```
+### Usage
 
-## Production
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Build the application for production:
+JetLink is now live at [http://localhost:3000](http://localhost:3000). 🚀
 
-```bash
-# npm
-npm run build
+## Features 🌟
 
-# pnpm
-pnpm run build
+- **Simplicity:** Easily create shortened URLs without the need for pricing or registration.
+- **Analytics:** Track analytics for the links you create, providing valuable insights.
 
-# yarn
-yarn build
+## Contributing 🤝
 
-# bun
-bun run build
-```
+We welcome contributions! If you'd like to contribute to JetLink, feel free to open an issue or create a pull request. Your feedback and ideas are highly appreciated. 🌟
 
-Locally preview production build:
+## License 📄
 
-```bash
-# npm
-npm run preview
+This project is licensed under the MIT License.
 
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Happy coding! 🚀✨

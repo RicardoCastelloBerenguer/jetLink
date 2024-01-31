@@ -1,5 +1,14 @@
 <template>
   <main class="pt-56 flex flex-col items-center justify-center">
+    <div class="absolute">
+      <LinkOverlay
+        v-if="isLinkDetailsOpen && linkCreated"
+        :shortUrl="linkCreated.shortUrl"
+        :origUrl="linkCreated.origUrl"
+        @update-linkDetails-value="changeVisibility()"
+      />
+    </div>
+
     <TitleLanding title="JetLink [ Link Shortener ]" />
     <section class="pt-32 w-full h-full">
       <header
@@ -9,7 +18,7 @@
           type="text"
           name=""
           v-model="originalUrl"
-          placeholder="Search Link"
+          placeholder="Insert here your link"
           id=""
           class="bg-white bg-opacity-5 rounded w-full placeholder-white placeholder-opacity-85 py-2 px-6 flex-grow basis-0"
         />
@@ -36,18 +45,27 @@
         </button>
       </header>
     </section>
+    <ModalGuideManager v-if="$generalStore.modalGuideOpen" />
   </main>
 </template>
 <script setup>
-const { $urlStore, $userStore } = useNuxtApp();
+import ModalGuideManager from "~/components/ui/ModalGuideManager.vue";
+import LinkOverlay from "~/components/ui/LinkOverlay.vue";
 
+const { $urlStore, $userStore, $generalStore } = useNuxtApp();
+
+let isLinkDetailsOpen = ref(false);
 const originalUrl = ref("");
 const loadingUrl = ref(false);
+const showModalLink = ref(false);
+const linkCreated = ref(null);
 
 const sendOriginalUrl = async () => {
   try {
-    await $urlStore.postUrl(originalUrl, $userStore.id);
+    let response = await $urlStore.postUrl(originalUrl, $userStore.id);
+    linkCreated.value = response.data.data;
     originalUrl.value = "";
+    isLinkDetailsOpen.value = true;
   } catch (error) {
     console.error("Error al enviar la URL:", error);
 
@@ -60,5 +78,9 @@ const sendOriginalUrl = async () => {
       console.error("Error desconocido al enviar la URL.");
     }
   }
+};
+
+const changeVisibility = () => {
+  isLinkDetailsOpen.value = false;
 };
 </script>

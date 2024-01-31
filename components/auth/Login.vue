@@ -4,16 +4,15 @@
 
     <div class="px-6 pb-2 text-[15px] flex flex-col gap-10 pt-5">
       <text-input
-        placeholder="Email"
+        placeholder="Username"
         input-type="text"
         :auto-focus="true"
-        :error="errors && errors.email ? errors.email[0] : ''"
         v-model:input="email"
       />
       <text-input
         placeholder="Password"
         input-type="password"
-        error=""
+        :error="errorLogin ? errorLogin.message : ''"
         v-model:input="password"
       />
 
@@ -40,11 +39,12 @@
 <script setup>
 import textInput from "~/components/ui/textInput.vue";
 
-const { $userStore } = useNuxtApp();
+const { $userStore, $generalStore } = useNuxtApp();
 
 let email = ref("");
 let password = ref("");
-let errors = ref(null);
+let errors = ref([]);
+let errorLogin = ref(null);
 let loadedLogin = ref(true);
 
 const login = async () => {
@@ -58,7 +58,9 @@ const login = async () => {
     email.value = "";
     password.value = "";
     loadedLogin.value = true;
+    $generalStore.isAuthOpen = false;
   } catch (error) {
+    errorLogin.value = error.response.data.err;
     loadedLogin.value = true;
   }
 };

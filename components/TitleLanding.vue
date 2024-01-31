@@ -15,17 +15,16 @@
     <div
       class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-10 text-sm"
     >
-      <a
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:opacity-80"
-        ><Icon name="ic:baseline-not-started" size="20" color="" class="mb-1" />
-        Getting Started</a
+      <button
+        @click="$generalStore.modalGuideOpen = true"
+        class="hover:opacity-80 animate-bounce-slow"
       >
+        <Icon name="ic:baseline-not-started" size="20" color="" class="mb-1" />
+        Getting Started
+      </button>
 
       <a
-        href="#"
+        href="https://github.com/RicardoCastelloBerenguer/jetLink"
         target="_blank"
         rel="noopener noreferrer"
         class="hover:opacity-80"
@@ -41,6 +40,8 @@
   </header>
 </template>
 <script setup>
+const { $generalStore } = useNuxtApp();
+
 const props = defineProps({
   title: {
     type: String,

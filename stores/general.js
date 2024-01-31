@@ -5,6 +5,7 @@ export const useGeneralStore = defineStore('general', {
   state: () => ({
     isAuthOpen : false,
     isLinkDetailsOpen : false,
+    modalGuideOpen : false,
   }),
   // could also be defined as
   // state: () => ({ count: 0 })

@@ -9,31 +9,34 @@ export const useUserStore = defineStore('user', {
   state: () => ({
     id : '' ,
     email : '',
+    logged : false ,
   }),
   // could also be defined as
   // state: () => ({ count: 0 })
   actions: {
     async register(user){
-      let res = await $axios.post('/auth/register' , {user : user});
-
-      console.log(res);      // this.login(res)
+      let res = await $axios.post('/auth/register' , {user : user});     // this.login(res)
     },
     async login(user){
       let res = await $axios.post('/auth/login' , {user : user});
-
+      console.log(res);
       if (res.data.ok) {
         // Guarda el token en el almacenamiento local
         localStorage.setItem('token', res.data.token);
 
         this.getUser(res.data.user);
-        }  // this.login(res)
+      }// this.login(res)
     },
     async logout(){
       try {
         this.$state.email = '';
         this.$state.id = ''
+        this.$state.logged = false
   
         localStorage.removeItem('token');
+        
+        await window.location.reload();
+
       }catch(error){
         console.error('Error when signing out:', error);
       }
@@ -43,26 +46,31 @@ export const useUserStore = defineStore('user', {
       if(user){
         this.$state.id = user.id;
         this.$state.email = user.email;
+        this.$state.logged = true;
       }
       else{
-        const token = localStorage.getItem('token');
+        if(!this.$state.id){
+          const token = localStorage.getItem('token');
 
-        if (token) {
-          try {
-            // Decodificar el token para obtener la información del usuario
-            const decodedToken = await jwtDecode(token).user;
-
-            this.$state.email = decodedToken.email;
-            this.$state.id = decodedToken.id
-            
-          } catch (error) {
-            console.error('Error al decodificar el token:', error);
-            // Manejar el error si es necesario
+          if (token) {
+            try {
+              // Decodificar el token para obtener la información del usuario
+              const decodedToken = await jwtDecode(token).user;
+  
+              this.$state.email = decodedToken.email;
+              this.$state.id = decodedToken.id
+              this.$state.logged = true;
+              
+            } catch (error) {
+              console.error('Error al decodificar el token:', error);
+              // Manejar el error si es necesario
+            }
+          }
+          else{
+            console.info('No hay ningún usuario registrado en token')
           }
         }
-        else{
-          console.error('No hay ningún usuario')
-        }
+        
       }
     },
   },

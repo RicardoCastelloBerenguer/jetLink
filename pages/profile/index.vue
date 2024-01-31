@@ -23,6 +23,8 @@ const { $urlStore } = useNuxtApp();
 
 const urls = ref(null);
 
+definePageMeta({ middleware: "auth" });
+
 onMounted(async () => {
   await $urlStore.getUrlsByUserLogged();
 });

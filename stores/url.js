@@ -19,6 +19,8 @@ export const useUrlStore = defineStore('url', {
     async postUrl(originalUrl , userId){
       console.log(userId);
       let res = await $axios.post('/short' , {originalUrl : originalUrl.value , userId : userId});
+
+      return res;
     },
     async goToUrl(shortLink){
       let res = await $axios.get(`/${shortLink}` , {originalUrl : shortLink.value});

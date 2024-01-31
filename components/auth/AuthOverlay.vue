@@ -8,13 +8,26 @@
     >
       <header class="w-full flex justify-end">
         <button
-          @click="isAuthOpen = false"
-          class="p-1.5 rounded-full bg-[#5d6060]"
+          @click="
+            () => {
+              isAuthOpen = false;
+              isRegister = false;
+            }
+          "
+          class="p-1.5 rounded-full bg-[#5d6060] hover:bg-[#646666]"
         >
           <Icon name="mdi:close" size="26" color="" class="" />
         </button>
       </header>
-      <Register v-if="isRegister" />
+      <Register
+        v-if="isRegister"
+        @change-to-login="
+          () => {
+            console.log(isRegister);
+            isRegister = false;
+          }
+        "
+      />
       <Login v-else />
       <footer
         class="absolute flex items-center justify-center py-5 left-0 bottom-0 border-t w-full gap-2"
