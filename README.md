@@ -32,12 +32,10 @@ JetLink is a simple and user-friendly URL shortener designed for ease of use. It
    ```
 4. **Connect to Backend:**
 
-**Next Auth:**
-
 - Go to /plugins/axios.js
 
 ```bash
-# make sure that it coincides with your backend url :
+# make sure that it coincides with your backend url : example -> axios.defaults.baseURL = 'http://localhost:3333/'
 axios.defaults.baseURL = 'your-backend-url'
 
 ```
@@ -89,11 +87,11 @@ DB_PASSWORD=''
    npm run dev
    ```
 
-1. **Run the api server at /api :**
+2. **Run the api server at /api :**
 
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
 JetLink api is now live at [http://localhost:3000](http://localhost:3333). 🚀
 
@@ -110,4 +108,8 @@ We welcome contributions! If you'd like to contribute to JetLink, feel free to o
 
 This project is licensed under the MIT License.
 
-Happy coding! 🚀✨
+-
+
+## Happy coding! 🚀✨
+
+-
