@@ -10,6 +10,8 @@ JetLink is a simple and user-friendly URL shortener designed for ease of use. It
 
 ### Installation
 
+## Frontend 🎨
+
 1. **Clone the repository:**
 
    ```bash
@@ -28,15 +30,72 @@ JetLink is a simple and user-friendly URL shortener designed for ease of use. It
    ```bash
    npm install
    ```
+4. **Connect to Backend:**
+
+**Next Auth:**
+
+- Go to /plugins/axios.js
+
+```bash
+# make sure that it coincides with your backend url :
+axios.defaults.baseURL = 'your-backend-url'
+
+```
+
+## Backend ⚙️
+
+1. **Navigate to the backend project directory:**
+
+   ```bash
+   cd /api
+
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Create a .env file with the following content:**
+   > 🚧 You have the .env.example with the basic content you need.
+
+```bash
+BASE_URL_FRONT=''
+BASE_URL_BACK=''
+
+#Example Port
+
+PORT=
+
+# JWT SECRET KEY - You will need this in order to set the Tokens for authentication.
+# You can create a JWT_SECRET_KEY online or using an algorithm
+
+JWT_SECRET_KEY =''
+CADUCIDAD_TOKEN = '7d'
+
+# DATABASE INFORMATION
+DB_HOST=''
+DB_NAME=''
+DB_USER=''
+DB_PASSWORD=''
+```
 
 ### Usage
 
-3. **Run the development server:**
+1. **Run the development server at / :**
+
    ```bash
    npm run dev
    ```
 
-JetLink is now live at [http://localhost:3000](http://localhost:3000). 🚀
+1. **Run the api server at /api :**
+
+```bash
+npm run dev
+```
+
+JetLink api is now live at [http://localhost:3000](http://localhost:3333). 🚀
 
 ## Features 🌟
 
