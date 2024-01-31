@@ -1,0 +1,9 @@
+# Ignore .env files
+.env*
+
+# Ignore Node.js related files
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp
+.pnp.js
