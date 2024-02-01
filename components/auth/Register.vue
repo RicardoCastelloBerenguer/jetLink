@@ -9,12 +9,14 @@
         :auto-focus="true"
         error=""
         v-model:input="email"
+        :minlength="6"
       />
       <text-input
         placeholder="Password"
         input-type="password"
         :error="errorRegister ? errorRegister : ''"
         v-model:input="password"
+        :minlength="6"
       />
 
       <div class="px-6 pb-2 mt-6">
@@ -54,17 +56,22 @@ let loadedRegister = ref(true);
 
 const register = async () => {
   try {
-    loadedRegister.value = false;
-    const user = {
-      email: email.value,
-      password: password.value,
-    };
-    let data = await $userStore.register(user);
-    loadedRegister.value = true;
-    email.value = "";
-    password.value = "";
-    await $userStore.login(user);
-    $generalStore.isAuthOpen = false;
+    errorRegister.value = "";
+    if (email.value.length >= 6 && password.value.length >= 6) {
+      loadedRegister.value = false;
+      const user = {
+        email: email.value,
+        password: password.value,
+      };
+      let data = await $userStore.register(user);
+      loadedRegister.value = true;
+      email.value = "";
+      password.value = "";
+      await $userStore.login(user);
+      $generalStore.isAuthOpen = false;
+    } else {
+      errorRegister.value = "User and password must be atleast 6 characters";
+    }
   } catch (error) {
     errorRegister.value = error.response.data.error;
     loadedRegister.value = true;

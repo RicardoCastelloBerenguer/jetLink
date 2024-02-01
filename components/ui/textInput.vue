@@ -7,6 +7,7 @@
     v-model="inputComputed"
     autocomplete="off"
     :maxlength="max"
+    :minlength="minlength"
   />
 
   <span v-if="error" class="text-red-500 text-[14px] font-semibold">
@@ -23,9 +24,10 @@ const props = defineProps([
   "max",
   "autoFocus",
   "error",
+  "minlength",
 ]);
 
-const { input, placeholder, inputType, max, error } = toRefs(props);
+const { input, placeholder, inputType, max, error, minlength } = toRefs(props);
 
 const inputComputed = computed({
   get: () => input.value,

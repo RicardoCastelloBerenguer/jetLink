@@ -23,7 +23,7 @@
       v-if="currentModal == 3"
       @nextModal="nextModal()"
       @prevModal="prevModal()"
-      textContent="For a comprehensive list of all the links you create, we recommend registering before generating any links. This way, you can easily manage and organize all your links."
+      textContent="For a comprehensive list of all the links you create, we recommend registering before generating any links. This way, you can enter your profile and easily manage and organize all your links."
       :maxModals="5"
       :currentModal="currentModal"
       class="absolute"
