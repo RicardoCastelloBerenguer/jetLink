@@ -14,7 +14,7 @@ dotenv.config()
 //SERVER SETUP
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: process.env.BASE_URL_FRONT || 'http://localhost:3000',
     optionsSuccessStatus: 200, // algunas versiones de los navegadores 204 
   };
 
