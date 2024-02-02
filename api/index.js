@@ -14,7 +14,7 @@ dotenv.config()
 //SERVER SETUP
 
 const corsOptions = {
-    origin: '*',
+    origin: process.env.BASE_URL_FRONT,
     optionsSuccessStatus: 200, // algunas versiones de los navegadores 204 
   };
 
