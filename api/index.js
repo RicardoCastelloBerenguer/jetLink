@@ -14,7 +14,7 @@ dotenv.config()
 //SERVER SETUP
 
 const corsOptions = {
-    origin: process.env.BASE_URL_FRONT,
+    origin: 'https://jetlinkr.vercel.app',
     optionsSuccessStatus: 200, // algunas versiones de los navegadores 204 
   };
 
