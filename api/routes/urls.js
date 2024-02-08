@@ -84,15 +84,30 @@ router.post('/short' , async (req, res) => {
               } else {
                 // La URL no fue encontrada en la base de datos
                 const shortUrl = `${base}/${urlId}`;
+                
+                
 
-                const newUrl = await Url.create({
+                if(userId){
+                  const newUrl = await Url.create({
+                      origUrl: originalUrl,
+                      shortUrl: shortUrl,
+                      userId : userId,
+                      urlId: urlId,
+                    });
+                    res.json({ message: 'URL guardada correctamente', data: newUrl });
+                }
+                else {
+                  const newUrl = await Url.create({
                     origUrl: originalUrl,
                     shortUrl: shortUrl,
-                    userId : userId,
                     urlId: urlId,
-                });
+                  });
+                  res.json({ message: 'URL guardada correctamente', data: newUrl });
+                }
 
-                res.json({ message: 'URL guardada correctamente', data: newUrl });
+                
+
+                
               }
         }catch(error){
             console.log(error);

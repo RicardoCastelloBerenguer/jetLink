@@ -26,8 +26,9 @@ const Url = sequelize.define('Url', {
     },
     userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-    },
+        allowNull: true,
+        defaultValue: 0,
+        },
 },
 {
     timestamps: true,
