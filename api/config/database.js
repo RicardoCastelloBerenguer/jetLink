@@ -1,11 +1,12 @@
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
-import mysql2 from "mysql2";
+import pg from "pg";
 
 dotenv.config();
 
 const sequelize = new Sequelize({
   dialect: "postgres", // Supabase utiliza PostgreSQL
+  dialectModule: pg,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
