@@ -13,11 +13,13 @@ dotenv.config();
 
 //SERVER SETUP
 
-const corsOptions = {
-  // origin:process.env.BASE_URL_FRONT,
-  origin: "https://jetlinkr.vercel.app",
-  optionsSuccessStatus: 200, // algunas versiones de los navegadores 204
-};
+app.use(
+  cors({
+    origin: "https://jetlinkr.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(cors(corsOptions));
 
